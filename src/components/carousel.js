@@ -1,5 +1,4 @@
 import React from "react";
-import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -8,11 +7,6 @@ const Image = styled.img`
   width: 57vw;
   height: 300px;
   margin: auto;
-`;
-
-const StyledSlider = styled(Slider)`
-  width: 100%;
-  margin-top: 24px;
 `;
 
 const FlexDiv = styled.div`
@@ -60,27 +54,6 @@ const Arrow = styled.div`
   color: #3366FF;
 `;
 
-const CustomArrow = styled.svg`
-  background-color: #cfcfcf;
-  width: 18px;
-  padding: 22px 7px;
-  border-radius: 24px;
-  opacity: 0.6;
-`;
-
-function NextArrow(props) {
-  const { className, onClick } = props;
-  return (
-      <CustomArrow className={className} onClick={onClick}><path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path></CustomArrow>
-  );
-}
-
-function PrevArrow(props) {
-  const { className, onClick } = props;
-  return (
-      <CustomArrow className={className} onClick={onClick}><path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path></CustomArrow>
-  );
-}
 
 function Carousel(){
   const imageList = [
@@ -95,21 +68,9 @@ function Carousel(){
     {src:"https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",title:"개발자 되고싶은 분들!?", text: "프론트엔드 무료 교육과정 참여하기"},
   ]
 
-  const settings = {
-    className: "center",
-    infinite: true,
-    centerMode: true,
-    centerPadding: '21%',
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
-  };
 
   return (
     <div>
-      <StyledSlider {...settings}>
         {imageList.map(contents => (
           <FlexDiv>
             <Image alt={contents.src} src={contents.src}/>
@@ -125,7 +86,6 @@ function Carousel(){
             </TextBox>
           </FlexDiv>
         ))}
-      </StyledSlider>
     </div>
   );
 }

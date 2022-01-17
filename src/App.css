@@ -12,15 +12,3 @@ li{
   font-weight: bold;
   font-size: 14px;
 }
-
-.slick-prev {
-  left: 17.5% !important;
-  top: 50% !important;
-  z-index: 1;
-}
-
-.slick-next {
-  right: 17.5% !important;
-  top: 50% !important;
-  z-index: 1;
-}
