@@ -32,7 +32,8 @@ margin-left: 8px;
 const Wanted = styled.span`
   font-size: 24px;
   font-weight: 800;
-  padding-bottom: 6px;
+  padding: 0 0 6px 6px;
+  letter-spacing: -1px;
 `;
 
 function Header(){
