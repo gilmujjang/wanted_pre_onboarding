@@ -77,13 +77,11 @@ const MoveArrow = styled.div`
 
 const SubContent = styled.div`
   width: 19vw;
-  transition: 1s;
 `;
 const MainContent = styled.div`
   width: 60vw;
   position: relative;
   margin: 0 24px;
-  transition: 1s;
 `;
 
 function Carousel(){
@@ -115,9 +113,7 @@ function Carousel(){
     }
   }
 
-  useEffect(() => {
-    setInterval(() => Next(), 5000)
-  },[state])
+  setTimeout(() => Next(), 5000)
 
   return (
     <div>
