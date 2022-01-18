@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -7,11 +7,27 @@ const Image = styled.img`
   width: 100%;
   height: 300px;
   border-radius: 4px;
+  object-fit: cover;
+`;
+
+const ElseImage = styled.img`
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+  object-fit: cover;
 `;
 
 const SubImage = styled.img`
   width: 100%;
   height: 300px;
+  border-radius: 4px;
+  object-fit: cover;
+  filter: brightness(50%);
+`;
+
+const ElseSubImage = styled.img`
+  width: 100%;
+  height: 180px;
   border-radius: 4px;
   object-fit: cover;
   filter: brightness(50%);
@@ -84,7 +100,8 @@ const MainContent = styled.div`
   margin: 0 24px;
 `;
 
-function Carousel(){
+function Carousel(props){
+  const {size} = props;
   const [state, setState] = useState(1);
   const imageList = [
     {src:"https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",title:"개발자 되고싶은 분들!?", text: "프론트엔드 무료 교육과정 참여하기"},
@@ -115,42 +132,84 @@ function Carousel(){
 
   setTimeout(() => Next(), 5000)
 
+  function PcCarousel(){
+    console.log(size)
+    return(
+      <div>
+        <SelfCarousel>
+          <SubContent>
+            <SubImage alt={imageList[state-1].src} src={imageList[state-1].src}/>
+          </SubContent>
+          <MainContent>
+            <MoveArrow onClick={Prev} style={{left: "-100px"}}>
+              <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
+                <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"/>
+              </svg>
+            </MoveArrow>
+            <Image alt={imageList[state].src} src={imageList[state].src}/>
+            <TextBox>
+              <Title>{imageList[state].title}</Title>
+              <Text>{imageList[state].text}</Text>
+              <Link>
+                바로가기
+                <Arrow>
+                  <svg viewBox="0 0 18 18">
+                    <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"/>
+                  </svg>
+                </Arrow>
+              </Link>
+            </TextBox>
+            <MoveArrow onClick={Next}  style={{right: "-100px"}}>
+              <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
+                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"/>
+              </svg>
+            </MoveArrow>
+          </MainContent>
+          <SubContent>
+            <SubImage alt={imageList[state+1].src} src={imageList[state+1].src}/>
+          </SubContent>
+        </SelfCarousel>
+      </div>
+    )
+  }
+
+  function ElseCarousel(){
+    return(
+      <>
+        <div>
+          <SelfCarousel>
+            <SubContent>
+              <ElseSubImage alt={imageList[state-1].src} src={imageList[state-1].src}/>
+            </SubContent>
+            <MainContent>
+              <ElseImage alt={imageList[state].src} src={imageList[state].src}/>
+            </MainContent>
+            <SubContent>
+              <ElseSubImage alt={imageList[state+1].src} src={imageList[state+1].src}/>
+            </SubContent>
+          </SelfCarousel>
+        </div>
+        <div style={{width: "300px", margin:"auto", textAlign: "center"}}>
+          <Title>{imageList[state].title}</Title>
+          <Text>{imageList[state].text}</Text>
+          <div style={{ color: "#3366FF",fontWeight: "600",fontSize: "14px", display: "flex", margin: "auto", justifyContent:"center"}}>
+            바로가기
+            <Arrow>
+              <svg viewBox="0 0 18 18">
+                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"/>
+              </svg>
+            </Arrow>
+          </div>
+      </div>
+      </>
+    )
+  }
+
+  console.log(size)
+  if(size > 993){ return <PcCarousel/>}
+
   return (
-    <div>
-      <SelfCarousel>
-        <SubContent>
-          <SubImage alt={imageList[state-1].src} src={imageList[state-1].src}/>
-        </SubContent>
-        <MainContent>
-          <MoveArrow onClick={Prev} style={{left: "-100px"}}>
-            <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-              <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"/>
-            </svg>
-          </MoveArrow>
-          <Image alt={imageList[state].src} src={imageList[state].src}/>
-          <TextBox>
-            <Title>{imageList[state].title}</Title>
-            <Text>{imageList[state].text}</Text>
-            <Link>
-              바로가기
-              <Arrow>
-                <svg viewBox="0 0 18 18">
-                  <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"/>
-                </svg>
-              </Arrow>
-            </Link>
-          </TextBox>
-          <MoveArrow onClick={Next}  style={{right: "-100px"}}>
-            <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-              <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"/>
-            </svg>
-          </MoveArrow>
-        </MainContent>
-        <SubContent>
-          <SubImage alt={imageList[state+1].src} src={imageList[state+1].src}/>
-        </SubContent>
-      </SelfCarousel>
-    </div>
+    <ElseCarousel/>
   );
 }
 

@@ -1,6 +1,5 @@
-import React, {useState,useEffect} from "react";
+import React from "react";
 import styled from 'styled-components';
-import { debounce } from "lodash";
 
 const Head = styled.div`
     border-bottom: 1px solid #cccccc;
@@ -148,19 +147,8 @@ function MobileHeader(){
   )
 }
 
-function Header(){
-  const [size, setSize] = useState();
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const handleResize = debounce(() => {
-    setSize(window.innerWidth);
-  }, 100);
+function Header(props){
+  const {size} = props;
 
   if(size > 993){ return <PcHeader/>}
   if(size > 766){ return <TabletHeader/>}
