@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import styled from "styled-components";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
 
 const Image = styled.img`
   width: 100%;
@@ -133,7 +131,6 @@ function Carousel(props){
   setTimeout(() => Next(), 5000)
 
   function PcCarousel(){
-    console.log(size)
     return(
       <div>
         <SelfCarousel>
@@ -205,7 +202,6 @@ function Carousel(props){
     )
   }
 
-  console.log(size)
   if(size > 993){ return <PcCarousel/>}
 
   return (
