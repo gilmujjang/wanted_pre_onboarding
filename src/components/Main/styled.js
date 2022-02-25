@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
 export const MainWrapper = styled.div`
-  margin-top: 36px;
-  width: 100%;
+  margin: 36px auto 0;
+  width: 50%;
+`;
+
+export const Description = styled.p`
+  font-size: 16px;
 `;
 
 export const TaskBox = styled.div`
-  margin: 24px auto;
+  margin: 24px 0;
   box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
   padding: 8px;
   border-radius: 8px;
-  width: 50%;
 `;
 
 export const TitleWrapper = styled.div`
@@ -50,7 +53,7 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Description = styled.div`
+export const TaskDescription = styled.div`
   margin: 8px;
 `;
 
