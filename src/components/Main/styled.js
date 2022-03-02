@@ -55,6 +55,7 @@ export const ContentWrapper = styled.div`
 
 export const TaskDescription = styled.div`
   margin: 8px;
+  font-weight: bold;
 `;
 
 export const Repo = styled.a`
